@@ -1,3 +1,7 @@
+[build]
+  command = "ng build --configuration production"
+  publish = "dist/mandu-reto-tecnico"
+  
 [[redirects]]
 from = "/*"
 to = "/index.html"
