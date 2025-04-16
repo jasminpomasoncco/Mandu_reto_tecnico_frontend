@@ -98,6 +98,7 @@
               }
             ],
             "styles": [
+              "src/_redirects",
               "src/assets",
               "src/styles.scss"
             ],
