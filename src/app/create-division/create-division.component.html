@@ -1,0 +1,37 @@
+<div class="dialog-container">
+    
+    <form nz-form [formGroup]="divisionForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzRequired>Nombre</nz-form-label>
+        <nz-form-control [nzSpan]="18" nzErrorTip="Por favor ingrese un nombre para la división">
+          <input nz-input formControlName="name" placeholder="Nombre de la división" />
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">División Superior</nz-form-label>
+        <nz-form-control [nzSpan]="18">
+          <nz-select formControlName="upper_division_id" 
+                     nzPlaceHolder="Seleccionar división superior" 
+                     (ngModelChange)="onUpperDivisionChange($event)">
+            <nz-option [nzValue]="null" nzLabel="Ninguna (División Principal)"></nz-option>
+            <nz-option *ngFor="let division of divisions" 
+                      [nzValue]="division.id" 
+                      [nzLabel]="division.name"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Embajador</nz-form-label>
+        <nz-form-control [nzSpan]="18">
+          <input nz-input formControlName="ambassador" placeholder="Nombre del embajador" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  
+    <div class="dialog-footer">
+      <button nz-button (click)="cancel()">Cancelar</button>
+      <button nz-button nzType="primary" [nzLoading]="isSubmitting" (click)="submitForm()">Crear</button>
+    </div>
+  </div>

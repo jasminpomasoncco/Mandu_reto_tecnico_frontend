@@ -1,0 +1,107 @@
+<app-menu></app-menu>
+
+<div class="table-container">
+
+    <div class="actions-header">
+        <div class="actions-left">
+          <h2 class="title">Organización</h2>
+          <div class="view-toggle">
+            <button class="view-button active" nz-button nzType="default">Listado</button>
+            <button class="view-button" nz-button nzType="default">Árbol</button>
+          </div>
+        </div>
+      
+        <div class="actions-right">
+          <div class="top-buttons">
+            <button nz-button nzType="primary" nzShape="circle" nzTooltipTitle="Agregar división" nz-tooltip (click)="openCreateDivisionDialog()">
+              <span nz-icon nzType="plus"></span>
+            </button>
+            <button nz-button nzShape="circle" nzTooltipTitle="Exportar Excel">
+              <span nz-icon nzType="file-excel"></span>
+            </button>
+            <button nz-button nzShape="circle" nzTooltipTitle="Exportar PDF">
+              <span nz-icon nzType="file-pdf"></span>
+            </button>
+          </div>
+      
+          <div class="search-row">
+            <nz-select [(ngModel)]="selectedColumn" (ngModelChange)="onSearch()" class="column-select" nzShowSearch nzAllowClear placeholder="Columna">
+              <nz-option *ngFor="let col of columns" [nzValue]="col.value" [nzLabel]="col.label"></nz-option>
+            </nz-select>
+      
+            <nz-input-group [nzSuffix]="suffixIcon" class="search-input-group">
+              <input nz-input [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Buscar..." class="search-input" />
+            </nz-input-group>
+      
+            <ng-template #suffixIcon>
+              <span nz-icon nzType="search"></span>
+            </ng-template>
+          </div>
+        </div>
+      </div>      
+
+  <nz-table
+    #divisionTable
+    [nzData]="pagedData"
+    [nzFrontPagination]="false"
+    [nzFrontPagination]="false"
+    nzShowPagination="false"
+    [nzLoading]="isLoading"
+    [nzTotal]="filteredDivisions.length"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex"
+    (nzPageIndexChange)="pageIndex = $event; onPageIndexChange()"
+    [nzScroll]="{ x: '1000px' }"
+  >
+    <thead>
+      <tr>
+        <th 
+          *ngFor="let column of columns" 
+          [nzSortOrder]="column.sortOrder" 
+          [nzSortFn]="column.sortFn"
+          [nzFilters]="column.listOfFilter" 
+          [nzFilterFn]="column.filterFn"
+          (nzSortOrderChange)="onSort(column.value, $event)"
+          (nzFilterChange)="onFilterChange($event, column.value)"
+        >
+          {{ column.name }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of pagedData">
+          <td>{{ item.name }}</td>
+          <td>{{ item.upper_division?.name || '-' }}</td>
+          <td>{{ item.number_collaborators }}</td>
+          <td>{{ item.level }}</td>
+          <td>
+            <span class="subdivision-count">{{ item.subdivisionCount }}</span>
+            <button nz-button nzSize="small" class="add-subdivision-btn">
+              <span nz-icon nzType="plus"></span>
+            </button>
+          </td>
+          <td>{{ item.ambassador || '-' }}</td>
+        </tr>
+      </tbody>
+      
+  </nz-table>
+
+  <div class="table-footer">
+    <nz-pagination
+  class="custom-pagination"
+  [nzPageIndex]="pageIndex"
+  [nzTotal]="filteredDivisions.length"
+  [nzPageSize]="pageSize"
+  (nzPageIndexChange)="pageIndex = $event; onPageIndexChange()">
+</nz-pagination>
+
+    <nz-select 
+      [(ngModel)]="pageSize" 
+      (ngModelChange)="onPageSizeChange()" 
+      class="items-per-page">
+      <nz-option [nzValue]="5" nzLabel="5 por página"></nz-option>
+      <nz-option [nzValue]="10" nzLabel="10 por página"></nz-option>
+      <nz-option [nzValue]="20" nzLabel="20 por página"></nz-option>
+    </nz-select>
+  </div>
+</div>

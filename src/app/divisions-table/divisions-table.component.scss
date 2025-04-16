@@ -1,0 +1,227 @@
+.table-container {
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+  
+      .left-actions {
+        display: flex;
+        align-items: center;
+  
+        button {
+          margin-right: 0.5rem;
+        }
+      }
+  
+      .right-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+  
+        .column-select {
+          width: 140px;
+        }
+  
+        .search-input {
+          width: 200px;
+        }
+      }
+    }
+  
+    .subdivision-icon {
+      color: #1890ff;
+      font-size: 16px;
+    }
+  
+    nz-table {
+      ::ng-deep .ant-table {
+        border-radius: 6px;
+      }
+  
+      ::ng-deep .ant-table-thead > tr > th {
+        background: #fafafa;
+        font-weight: 600;
+        font-size: 13px;
+      }
+  
+      ::ng-deep .ant-table-tbody > tr > td {
+        font-size: 13px;
+        padding: 10px 16px;
+      }
+    }
+  
+    .table-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      row-gap: 1rem;
+  
+      .footer-left {
+        font-weight: 500;
+        font-size: 14px;
+      }
+  
+      .footer-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+  
+        nz-select {
+          width: 110px;
+        }
+      }
+    }
+  }
+  .subdivision-count {
+    text-decoration: underline;
+  }
+
+  .add-subdivision-btn {
+    margin-left: 6px;
+    background-color: rgba(73, 197, 169, 0.9);
+    border: none;
+    border-radius: 0.8rem;
+    color: white;
+
+    nz-icon {
+      font-size: 7px;
+      line-height: 1;
+    }
+  
+    &:hover {
+      background-color: rgba(38, 173, 142, 0.9);
+    }
+  
+    &:focus {
+      background-color: rgba(25, 109, 89, 0.9);
+    }
+  }
+  
+
+  .actions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  
+    .actions-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+  
+      .title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .status-buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+      }
+      
+      .status-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: #007BFF;
+        cursor: pointer;
+      }
+  
+      .view-button {
+        background-color: #fff;
+        border: 1.5px solid #1890ff;
+        color: #1890ff;
+        border-radius: 3px;
+        padding: 6px 16px;
+        font-weight: 500;
+        transition: 0.3s ease;
+  
+        &:hover {
+          background-color: #e6f7ff;
+          border-color: #40a9ff;
+        }
+  
+        &.active {
+          background-color: #e6f7ff;
+          border-color: #1890ff;
+          color: #1890ff;
+        
+        }
+      }
+    }
+  
+    .actions-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+  
+      .top-buttons {
+        display: flex;
+        gap: 10px;
+  
+        button[nz-button] {
+          background-color: white;
+          border: 1.5px solid #1890ff;
+          color: #1890ff;
+          transition: all 0.3s ease;
+  
+          &:hover {
+            background-color: #e6f7ff;
+            border-color: #40a9ff;
+            color: #016fc9;
+          }
+  
+          span[nz-icon] {
+            color: inherit;
+          }
+        }
+      }
+  
+      .search-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+  
+        .column-select {
+          width: 200px;
+        }
+  
+        .search-input-group {
+          width: 250px;
+        }
+  
+        .search-input {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  
+    .items-per-page {
+      min-width: 150px;
+    }
+  
+    .custom-pagination {
+      margin-left: auto;
+    }
+  }
+  
