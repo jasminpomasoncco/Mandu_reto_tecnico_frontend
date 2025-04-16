@@ -8,7 +8,7 @@ import { Division } from '../models/division.model';
 })
 export class DivisionService {
 
-  private baseUrl = 'http://localhost:3000/division';
+  private baseUrl = 'https://manduretobackend-production.up.railway.app/division';
 
   constructor(private http: HttpClient) {}
 

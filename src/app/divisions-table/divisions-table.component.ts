@@ -11,10 +11,11 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { en_US, NZ_DATE_LOCALE } from 'ng-zorro-antd/i18n';
+import { en_US, NZ_DATE_LOCALE, NzI18nService } from 'ng-zorro-antd/i18n';
 import { MenuComponent } from '../menu/menu.component';
 import { CreateDivisionDialogComponent } from '../create-division/create-division.component';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+
 
 interface ColumnItem {
   name: string;
@@ -128,7 +129,7 @@ export class DivisionsTableComponent implements OnInit {
   ];
 
   constructor(private divisionService: DivisionService,
-    private modalService: NzModalService ) {}
+    private modalService: NzModalService, private i18n: NzI18nService ) {}
 
   ngOnInit(): void {
     this.loadDivisions();
@@ -321,6 +322,10 @@ export class DivisionsTableComponent implements OnInit {
         this.loadDivisions();
       }
     });
+  }
+
+  switchLanguage() {
+    this.i18n.setLocale(en_US);
   }
 
 }
